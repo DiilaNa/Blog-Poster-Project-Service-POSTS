@@ -24,6 +24,8 @@ stop-all-local.sh
 *.iml
 *.ipr
 
+uploads
+uploads/
 logs
 logs/
 .env
