@@ -9,12 +9,14 @@ import com.miniblog.postservice.repository.PostRepository;
 import com.miniblog.postservice.service.PostService;
 import com.miniblog.postservice.service.StorageService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
@@ -41,6 +43,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<PostResponseDTO> getAllPosts() {
         return postRepository.findAll().stream()
                 .map(postMapper::toResponseDTO)
@@ -48,14 +51,15 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponseDTO getPostById(String id) {
+    @Transactional(readOnly = true)
+    public PostResponseDTO getPostById(Long id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException("Post not found with ID: " + id));
         return postMapper.toResponseDTO(post);
     }
 
     @Override
-    public void deletePost(String id) {
+    public void deletePost(Long id) {
         if (!postRepository.existsById(id)) {
             throw new PostNotFoundException("Post not found with ID: " + id);
         }

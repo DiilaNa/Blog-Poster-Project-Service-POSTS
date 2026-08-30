@@ -3,7 +3,7 @@ package com.miniblog.postservice.dto;
 import java.time.LocalDateTime;
 
 public class PostResponseDTO {
-    private String id;
+    private Long id;
     private String title;
     private String content;
     private Long authorId;
@@ -13,7 +13,7 @@ public class PostResponseDTO {
     // Constructors
     public PostResponseDTO() {}
 
-    public PostResponseDTO(String id, String title, String content, Long authorId, String coverImageUrl, LocalDateTime createdAt) {
+    public PostResponseDTO(Long id, String title, String content, Long authorId, String coverImageUrl, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -23,8 +23,8 @@ public class PostResponseDTO {
     }
 
     // Getters and Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }

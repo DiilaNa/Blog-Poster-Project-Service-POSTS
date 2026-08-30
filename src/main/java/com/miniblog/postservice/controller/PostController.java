@@ -50,13 +50,13 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PostResponseDTO> getPostById(@PathVariable String id) {
+    public ResponseEntity<PostResponseDTO> getPostById(@PathVariable Long id) {
         PostResponseDTO post = postService.getPostById(id);
         return ResponseEntity.ok(post);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePost(@PathVariable String id) {
+    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.deletePost(id);
         return ResponseEntity.noContent().build();
     }

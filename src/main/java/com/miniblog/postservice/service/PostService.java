@@ -9,6 +9,6 @@ import java.util.List;
 public interface PostService {
     PostResponseDTO createPost(PostRequestDTO requestDTO, MultipartFile coverImage);
     List<PostResponseDTO> getAllPosts();
-    PostResponseDTO getPostById(String id);
-    void deletePost(String id);
+    PostResponseDTO getPostById(Long id);
+    void deletePost(Long id);
 }
